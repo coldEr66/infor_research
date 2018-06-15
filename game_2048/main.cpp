@@ -5,12 +5,43 @@ class game{
 
 private:
   int cell[4][4] = {};
+  int score = 0;
+  int best = 0;
+
+  void print_game_over(){ //print game over hint
+
+  }
 
 public:
+
+  void game_loop(){
+
+  }
+
+  void start_new_game(){
+
+  }
+
+  void ask_restart(){
+
+  }
+
+  void restart_game(){
+
+  }
+
+  bool check_game_over(){ //return if the game's over
+
+  }
+
+  void move_cells(int direction){ //move cells {0,1,2,3} = {up,right,down,left}
+
+  }
+
   void print_slug(){
     cout<<"I'm a slug"<<endl;
   }
-  
+
   void print_cell(){
     system("clear");
     for(int i=0;i<4;i++){
@@ -36,7 +67,6 @@ public:
 };
 int main(){
   game root;
-  root.print_cell();
-  for(int i=0;i<5;i++)root.generate_random_cell();
+
   return 0;
 }
