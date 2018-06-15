@@ -7,6 +7,10 @@ private:
   int cell[4][4] = {};
 
 public:
+  void print_slug(){
+    cout<<"I'm a slug"<<endl;
+  }
+  
   void print_cell(){
     system("clear");
     for(int i=0;i<4;i++){
