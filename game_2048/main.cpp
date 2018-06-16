@@ -70,6 +70,7 @@ public:
 
   void restart_game(){
     clear_cell();
+    print_cell();
     score = 0;
   }
 
