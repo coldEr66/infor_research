@@ -41,7 +41,8 @@ public:
   }
 
   void start_new_game(){
-
+    generate_keymap();
+    game_loop();
   }
 
   bool ask_restart(){
@@ -73,7 +74,31 @@ public:
   }
 
   void move_cells(int direction){ //move cells {0,1,2,3} = {up,right,down,left}
+    cout<<"[DEBUG]: (direction) = "<<direction<<endl;
+    if(direction == 0){ //up or down
+      for(int i=0;i<4;i++){ //numbers of colls
+        for(int j=1;j<4;j++){ //index of cell to move
+          int k; //right most not empty cell
+          for(k=j-1;k>=0;k--){
+            if(cell[i][k] != 0)break;
+          }
+          if(cell[i][j] == cell[i][k]){
+            cell[i][k] += cell[i][j];
+            cell[i][j] = 0;
+          } else {
+            int tmp = cell[i][j];
+            cell[i][j] = 0;
+            cell[i][k+1] = tmp;
+          }
+        }
+      }
+    } else if(direction == 1) {
 
+    } else if(direction == 2) {
+
+    } else if(direction == 3) {
+
+    }
   }
 
   void print_slug(){
@@ -105,6 +130,6 @@ public:
 };
 int main(){
   game root;
-
+  root.start_new_game();
   return 0;
 }
