@@ -78,7 +78,7 @@ public:
   void move_cells(int direction){ //move cells {0,1,2,3} = {up,right,down,left}
     cout<<"[DEBUG]: (direction) = "<<direction<<endl;
     if(direction == 0){ //up
-      for(int j=0;j<4;j++){ //numbers of rolls
+      for(int j=0;j<4;j++){ //numbers of cols
         for(int i=1;i<4;i++){ //index of cell to move
           int k; //bottom most not empty cell
           for(k=i-1;k>=0;k--){
@@ -95,7 +95,7 @@ public:
         }
       }
     } else if(direction == 1) { //right
-      for(int i=0;i<4;i++){ //numbers of rolls
+      for(int i=0;i<4;i++){ //numbers of rows
         for(int j=2;j>=0;j--){ //index of cell to move
           int k; //left most not empty cell
           for(k=j+1;k<4;k++){
@@ -112,7 +112,7 @@ public:
         }
       }
     } else if(direction == 2) {
-      for(int j=0;j<4;j++){ //numbers of rolls
+      for(int j=0;j<4;j++){ //numbers of cols
         for(int i=2;i>=0;i--){ //index of cell to move
           int k; //top most not empty cell
           for(k=i+1;k<4;k++){
@@ -129,7 +129,7 @@ public:
         }
       }
     } else if(direction == 3) { //left
-      for(int i=0;i<4;i++){ //numbers of rolls
+      for(int i=0;i<4;i++){ //numbers of rows
         for(int j=1;j<4;j++){ //index of cell to move
           int k; //right most not empty cell
           for(k=j-1;k>=0;k--){
