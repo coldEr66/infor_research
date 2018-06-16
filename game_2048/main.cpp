@@ -31,6 +31,10 @@ public:
   void game_loop(){
     char c;
     while(cin>>c){
+      if(keymap.find(c)==keymap.end()) {
+        print_cell();
+        continue;
+      }
       move_cells(keymap[c]);
       if(check_game_over()){
         print_game_over();
