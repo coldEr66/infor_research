@@ -53,7 +53,19 @@ public:
   }
 
   bool ask_restart(){
-
+    cout<<"Do you want to start a new game? (Y/n)"<<endl;
+    string res;
+    cin>>res;
+    while(1){
+      if(res[0] == 'Y' || res[0] == 'y'){
+        return false;
+      } else if(res[0] == 'N' || res[0] == 'n'){
+        return true;
+      } else {
+        cout<<"Do you want to start a new game? (Y/n)"<<endl;
+        cin>>res;
+      }
+    }
   }
 
   void restart_game(){
