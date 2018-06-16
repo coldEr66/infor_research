@@ -38,8 +38,11 @@ public:
       move_cells(keymap[c]);
       if(check_game_over()){
         print_game_over();
-        if(ask_restart()) start_new_game();
-        else break;
+        if(ask_restart()) restart_game();
+        else {
+          cout<<"Farewell!"<<endl;
+          return;
+        }
       }
       generate_random_cell();
       print_cell();
@@ -58,9 +61,9 @@ public:
     cin>>res;
     while(1){
       if(res[0] == 'Y' || res[0] == 'y'){
-        return false;
-      } else if(res[0] == 'N' || res[0] == 'n'){
         return true;
+      } else if(res[0] == 'N' || res[0] == 'n'){
+        return false;
       } else {
         cout<<"Do you want to start a new game? (Y/n)"<<endl;
         cin>>res;
