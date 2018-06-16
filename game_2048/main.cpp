@@ -18,6 +18,14 @@ private:
     for(int i=0;i<4;i++) keymap[keystr[i]] = i;
   }
 
+  void clear_cell(){
+    for(int i=0;i<4;i++){
+      for(int j=0;j<4;j++){
+        cell[i][j] = 0;
+      }
+    }
+  }
+
 public:
 
   void game_loop(){
@@ -42,7 +50,8 @@ public:
   }
 
   void restart_game(){
-
+    clear_cell();
+    score = 0;
   }
 
   bool check_game_over(){ //return if the game's over
