@@ -48,6 +48,7 @@ public:
 
   void start_new_game(){
     generate_keymap();
+    print_cell();
     game_loop();
   }
 
