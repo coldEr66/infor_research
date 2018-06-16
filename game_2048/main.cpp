@@ -37,6 +37,7 @@ public:
         if(ask_restart()) start_new_game();
         else break;
       }
+      generate_random_cell();
     }
   }
 
