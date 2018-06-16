@@ -80,7 +80,6 @@ public:
   }
 
   void move_cells(int direction){ //move cells {0,1,2,3} = {up,right,down,left}
-    cout<<"[DEBUG]: (direction) = "<<direction<<endl;
     if(direction == 0){ //up
       for(int j=0;j<4;j++){ //numbers of cols
         for(int i=1;i<4;i++){ //index of cell to move
