@@ -174,12 +174,19 @@ public:
 
   void print_cell(){
     system("clear");
+    cout<<' ';
+    for(int i=0;i<23;i++) cout<<'_';
+    cout<<endl;
     for(int i=0;i<4;i++){
       for(int j=0;j<4;j++){
-        cout<<setw(6)<<cell[i][j];
+        cout<<'|';
+        cout<<setfill(' ')<<setw(3)<<cell[i][j]<<setw(3);
       }
-      cout<<endl;
+      cout<<'|'<<endl;
     }
+    cout<<' ';
+    for(int i=0;i<23;i++) cout<<'_';
+    cout<<endl;
   }
 
   void generate_random_cell(){
