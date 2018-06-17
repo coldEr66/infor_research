@@ -183,10 +183,11 @@ public:
         cout<<setfill(' ')<<setw(3)<<cell[i][j]<<setw(3);
       }
       cout<<'|'<<endl;
+      cout<<' ';
+      for(int j=0;j<23;j++) cout<<'_';
+      cout<<endl;
     }
-    cout<<' ';
-    for(int i=0;i<23;i++) cout<<'_';
-    cout<<endl;
+
   }
 
   void generate_random_cell(){
