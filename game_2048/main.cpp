@@ -11,6 +11,7 @@ private:
 
   void print_game_over(){ //print game over hint
     cout<<"GAME OVER!"<<endl;
+    cout<<"Score: "<<score<<endl;
   }
 
   void generate_keymap(){
@@ -27,7 +28,7 @@ private:
   }
 
 public:
-  
+
   void game_loop(){
     char c;
     while(cin>>c){
