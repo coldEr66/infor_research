@@ -1,6 +1,6 @@
 # 2048 Game
 A 2048 game in C++
-The goal is to made an artificial intelligence bot to beat the game Lol!!!
+The goal is to make an artificial intelligence bot to beat the game Lol!!!
 
 ## Compile and Run
 compile with g++
@@ -16,3 +16,4 @@ then run it
 ## How to Play
 wasd <RET> to move the tiles
 To play on web please visit [2048](https://gabrielecirulli.github.io/2048/)
+gi
