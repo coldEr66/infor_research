@@ -6,6 +6,7 @@ class game{
 private:
   int cell[4][4] = {};
   int score = 0;
+  int maxcell = 0;
   int best = 0;
   map<char,int> keymap;
 
@@ -172,6 +173,11 @@ public:
       }
     }
     best = max(best,score);
+    for(int i=0;i<4;i++){
+      for(int j=0;j<4;j++){
+        maxcell = max(maxcell,cell[i][j]);
+      }
+    }
   }
 
   void print_slug(){
