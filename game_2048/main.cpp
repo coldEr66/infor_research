@@ -27,7 +27,7 @@ private:
   }
 
 public:
-
+  
   void game_loop(){
     char c;
     while(cin>>c){
@@ -170,6 +170,7 @@ public:
         }
       }
     }
+    best = max(best,score);
   }
 
   void print_slug(){
