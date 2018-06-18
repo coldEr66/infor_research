@@ -32,7 +32,7 @@ public:
     char c;
     while(cin>>c){
       if(keymap.find(c)==keymap.end()) {
-        print_cell();
+        print_board();
         continue;
       }
       move_cells(keymap[c]);
@@ -45,13 +45,13 @@ public:
         }
       }
       generate_random_cell();
-      print_cell();
+      print_board();
     }
   }
 
   void start_new_game(){
     generate_keymap();
-    print_cell();
+    print_board();
     game_loop();
   }
 
@@ -73,7 +73,7 @@ public:
 
   void restart_game(){
     clear_cell();
-    print_cell();
+    print_board();
     score = 0;
   }
 
@@ -106,6 +106,7 @@ public:
           }
           if(cell[i][j] == cell[k][j]){
             cell[k][j] += cell[i][j];
+            score += cell[k][j];
             cell[i][j] = 0;
           } else {
             int tmp = cell[i][j];
@@ -123,6 +124,7 @@ public:
           }
           if(cell[i][j] == cell[i][k]){
             cell[i][k] += cell[i][j];
+            score += cell[i][k];
             cell[i][j] = 0;
           } else {
             int tmp = cell[i][j];
@@ -140,6 +142,7 @@ public:
           }
           if(cell[i][j] == cell[k][j]){
             cell[k][j] += cell[i][j];
+            score += cell[k][j];
             cell[i][j] = 0;
           } else {
             int tmp = cell[i][j];
@@ -157,6 +160,7 @@ public:
           }
           if(cell[i][j] == cell[i][k]){
             cell[i][k] += cell[i][j];
+            score += cell[i][k];
             cell[i][j] = 0;
           } else {
             int tmp = cell[i][j];
@@ -172,7 +176,7 @@ public:
     cout<<"I'm a slug"<<endl;
   }
 
-  void print_cell(){
+  void print_board(){
     system("clear");
     cout<<' ';
     for(int i=0;i<23;i++) cout<<'_';
