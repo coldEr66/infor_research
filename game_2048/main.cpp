@@ -38,7 +38,8 @@ public:
         print_board();
         continue;
       }
-      move_cells(keymap[c]);
+      score += move_cells(keymap[c]);
+      best = max(best,score);
       if(check_game_over()){
         print_game_over();
         if(ask_restart()) restart_game();
@@ -59,7 +60,7 @@ public:
   }
 
   bool ask_restart(){
-    cout<<"Do you want to start a new game? (Y/n)"<<;
+    cout<<"Do you want to start a new game? (Y/n)";
     string res;
     cin>>res;
     while(1){
@@ -99,7 +100,8 @@ public:
     return true;
   }
 
-  void move_cells(int direction){ //move cells {0,1,2,3} = {up,right,down,left}
+  int move_cells(int direction){ //move cells {0,1,2,3} = {up,right,down,left}
+    int ret_score = 0;
     if(direction == 0){ //up
       for(int j=0;j<4;j++){ //numbers of cols
         for(int i=1;i<4;i++){ //index of cell to move
@@ -109,7 +111,7 @@ public:
           }
           if(cell[i][j] == cell[k][j]){
             cell[k][j] += cell[i][j];
-            score += cell[k][j];
+            ret_score += cell[k][j];
             cell[i][j] = 0;
           } else {
             int tmp = cell[i][j];
@@ -127,7 +129,7 @@ public:
           }
           if(cell[i][j] == cell[i][k]){
             cell[i][k] += cell[i][j];
-            score += cell[i][k];
+            ret_score += cell[i][k];
             cell[i][j] = 0;
           } else {
             int tmp = cell[i][j];
@@ -145,7 +147,7 @@ public:
           }
           if(cell[i][j] == cell[k][j]){
             cell[k][j] += cell[i][j];
-            score += cell[k][j];
+            ret_score += cell[k][j];
             cell[i][j] = 0;
           } else {
             int tmp = cell[i][j];
@@ -163,7 +165,7 @@ public:
           }
           if(cell[i][j] == cell[i][k]){
             cell[i][k] += cell[i][j];
-            score += cell[i][k];
+            ret_score += cell[i][k];
             cell[i][j] = 0;
           } else {
             int tmp = cell[i][j];
@@ -173,12 +175,12 @@ public:
         }
       }
     }
-    best = max(best,score);
     for(int i=0;i<4;i++){
       for(int j=0;j<4;j++){
         maxcell = max(maxcell,cell[i][j]); //max value of all cells
       }
     }
+    return ret_score;
   }
 
   void print_slug(){
