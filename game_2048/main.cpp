@@ -175,7 +175,7 @@ public:
     best = max(best,score);
     for(int i=0;i<4;i++){
       for(int j=0;j<4;j++){
-        maxcell = max(maxcell,cell[i][j]);
+        maxcell = max(maxcell,cell[i][j]); //max value of all cells
       }
     }
   }
