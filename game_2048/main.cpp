@@ -178,6 +178,7 @@ public:
 
   void print_board(){
     system("clear");
+    cout<<"Score:"<<setw(6)<<score<<" Best:"<<setw(6)<<best<<endl;
     cout<<' ';
     for(int i=0;i<23;i++) cout<<'_';
     cout<<endl;
