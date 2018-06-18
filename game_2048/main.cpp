@@ -12,7 +12,8 @@ private:
 
   void print_game_over(){ //print game over hint
     cout<<"GAME OVER!"<<endl;
-    cout<<"Score: "<<score<<endl;
+    cout<<"Score: "<<setw(8)<<score<<endl;
+    cout<<"Maxcell: "<<setw(6)<<maxcell<<endl;
   }
 
   void generate_keymap(){
@@ -58,7 +59,7 @@ public:
   }
 
   bool ask_restart(){
-    cout<<"Do you want to start a new game? (Y/n)"<<endl;
+    cout<<"Do you want to start a new game? (Y/n)"<<;
     string res;
     cin>>res;
     while(1){
