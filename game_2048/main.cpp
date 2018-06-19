@@ -29,6 +29,7 @@ private:
 public:
 
   void game_loop(){
+    //generate_random_cell();
     char c;
     while(cin>>c){
       if(keymap.find(c)==keymap.end()) {
