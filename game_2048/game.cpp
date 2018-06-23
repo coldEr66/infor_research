@@ -2,7 +2,9 @@
 #include <vector>
 #include "game.h"
 using namespace std;
-
+game::game(){
+  srand(time(NULL));
+}
 void game::clear_cell(){
   for(int i=0;i<4;i++){
     for(int j=0;j<4;j++){
