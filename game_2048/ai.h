@@ -6,9 +6,7 @@ private:
   /*
   0: greedy highest score
   */
-  void play_greedy(game &board){
-
-  }
+  void play_greedy(game &board);
 public:
   ai();
   ai(int mode);

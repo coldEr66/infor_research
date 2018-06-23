@@ -7,11 +7,11 @@ ai::ai(){
 ai::ai(int mode){
   ai_mode = mode;
 }
-ai::auto_play(game &board){
+void ai::auto_play(game &board){
   if(ai_mode == 0){
     play_greedy(board);
   }
 }
-ai::play_greedy(game &board){
-  
+void ai::play_greedy(game &board){
+
 }
