@@ -16,7 +16,7 @@ int main(){
       mode_chosed = true;
       root.start_new_ui_game();
     } else if(game_mode == 1) {
-      game_mode = true;
+      mode_chosed = true;
       ai ai_player(0);
       ai_player.auto_play(root);
     } else {
