@@ -20,8 +20,11 @@ void ui_game::game_loop(){
       print_board();
       continue;
     }
+    vector<int> prev_state = get_board();
     score += move_cells(keymap[c]);
+    if(prev_state != get_board())generate_random_cell();
     best = max(best,score);
+    print_board();
     if(check_game_over()){
       print_game_over();
       if(ask_restart()) restart_game();
@@ -30,8 +33,6 @@ void ui_game::game_loop(){
         return;
       }
     }
-    generate_random_cell();
-    print_board();
   }
 }
 
