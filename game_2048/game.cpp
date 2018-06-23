@@ -126,13 +126,6 @@ int game::move_cells(int direction){ //move cells {0,1,2,3} = {up,right,down,lef
   return ret_score;
 }
 
-int game::play_by_direction(int direction){
-  vector<int> prev_state = get_board();
-  int ret = move_cells(direction);
-  if(prev_state != get_board())generate_random_cell();
-  if(check_game_over())ret -= 1000000000;
-  return ret;
-}
 void game::generate_random_cell(){
   vector<pair<int,int> > available;
   for(int i=0;i<4;i++)

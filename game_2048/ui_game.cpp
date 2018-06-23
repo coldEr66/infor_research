@@ -12,7 +12,15 @@ void ui_game::generate_keymap(){
   string keystr = "wdsa";
   for(int i=0;i<4;i++) keymap[keystr[i]] = i;
 }
-
+void ui_game::play_by_direction(int direction){
+  vector<int> prev_state = get_board();
+  score += move_cells(direction);
+  if(prev_state != get_board())generate_random_cell();
+  best = max(best,score);
+  if(check_game_over()){
+    print_game_over();
+  }
+}
 void ui_game::game_loop(){
   char c;
   while(cin>>c){
@@ -41,6 +49,8 @@ void ui_game::init_data(){
   maxcell = 0;
   best = 0;
 }
+
+
 void ui_game::start_new_ui_game(){
   init_data();
   clear_cell();
