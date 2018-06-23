@@ -1,17 +1,7 @@
-#include <bits/stdc++.h>
-using namespace std;
+#include <utility>
+#include <vector>
 #include "game.h"
-
-void game::print_game_over(){ //print game over hint
-  cout<<"GAME OVER!"<<endl;
-  cout<<"Score: "<<setw(8)<<score<<endl;
-  cout<<"Maxcell: "<<setw(6)<<maxcell<<endl;
-}
-
-void game::generate_keymap(){
-  string keystr = "wdsa";
-  for(int i=0;i<4;i++) keymap[keystr[i]] = i;
-}
+using namespace std;
 
 void game::clear_cell(){
   for(int i=0;i<4;i++){
@@ -21,55 +11,20 @@ void game::clear_cell(){
   }
 }
 
-void game::game_loop(){
-  char c;
-  while(cin>>c){
-    if(keymap.find(c)==keymap.end()) {
-      print_board();
-      continue;
-    }
-    score += move_cells(keymap[c]);
-    best = max(best,score);
-    if(check_game_over()){
-      print_game_over();
-      if(ask_restart()) restart_game();
-      else {
-        cout<<"Farewell!"<<endl;
-        return;
-      }
-    }
-    generate_random_cell();
-    print_board();
+void game::set_board(vector<int> input){
+  for(int i=0;i<16;i++){
+    cell[i/4][i%4] = input[i];
   }
 }
 
-void game::start_new_game(){
-  clear_cell();
-  generate_keymap();
-  print_board();
-  game_loop();
-}
-
-bool game::ask_restart(){
-  cout<<"Do you want to start a new game? (Y/n)";
-  string res;
-  cin>>res;
-  while(1){
-    if(res[0] == 'Y' || res[0] == 'y'){
-      return true;
-    } else if(res[0] == 'N' || res[0] == 'n'){
-      return false;
-    } else {
-      cout<<"Do you want to start a new game? (Y/n)"<<endl;
-      cin>>res;
+vector<int> game::get_board(){
+  vector<int> ret;
+  for(int i=0;i<4;i++){
+    for(int j=0;j<4;j++){
+      ret.push_back(cell[i][j]);
     }
   }
-}
-
-void game::restart_game(){
-  clear_cell();
-  print_board();
-  score = 0;
+  return ret;
 }
 
 bool game::check_game_over(){ //return if the game's over
@@ -166,35 +121,7 @@ int game::move_cells(int direction){ //move cells {0,1,2,3} = {up,right,down,lef
       }
     }
   }
-  for(int i=0;i<4;i++){
-    for(int j=0;j<4;j++){
-      maxcell = max(maxcell,cell[i][j]); //max value of all cells
-    }
-  }
   return ret_score;
-}
-
-void game::print_slug(){
-  cout<<"I'm a slug"<<endl;
-}
-
-void game::print_board(){
-  system("clear");
-  cout<<"Score:"<<setw(6)<<score<<" Best:"<<setw(6)<<best<<endl;
-  cout<<' ';
-  for(int i=0;i<23;i++) cout<<'_';
-  cout<<endl;
-  for(int i=0;i<4;i++){
-    for(int j=0;j<4;j++){
-      cout<<'|';
-      cout<<setfill(' ')<<setw(3)<<cell[i][j]<<setw(3);
-    }
-    cout<<'|'<<endl;
-    cout<<' ';
-    for(int j=0;j<23;j++) cout<<'_';
-    cout<<endl;
-  }
-
 }
 
 void game::generate_random_cell(){
