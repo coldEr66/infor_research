@@ -10,6 +10,7 @@ public:
   void set_board(std::vector<int> input);
   bool check_game_over();
   int move_cells(int direction);
+  int play_by_direction(int direction);
   void generate_random_cell();
   std::vector<int> get_board();
 };
