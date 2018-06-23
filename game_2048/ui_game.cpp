@@ -17,6 +17,7 @@ void ui_game::play_by_direction(int direction){
   score += move_cells(direction);
   if(prev_state != get_board())generate_random_cell();
   best = max(best,score);
+  print_board();
   if(check_game_over()){
     print_game_over();
   }
