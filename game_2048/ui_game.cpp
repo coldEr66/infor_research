@@ -36,6 +36,7 @@ void ui_game::game_loop(){
 }
 
 void ui_game::init_data(){
+  score = 0;
   maxcell = 0;
   best = 0;
 }
@@ -43,6 +44,7 @@ void ui_game::start_new_ui_game(){
   init_data();
   clear_cell();
   generate_keymap();
+  generate_random_cell();
   print_board();
   game_loop();
 }
