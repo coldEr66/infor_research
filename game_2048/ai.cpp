@@ -1,3 +1,4 @@
+#include <iostream>
 #include "ai.h"
 #include "game.h"
 using namespace std;
@@ -10,12 +11,13 @@ ai::ai(int mode){
 void ai::init_fake_game(){
   fake_game.clear_cell();
 }
-void ai::auto_play(game &board){
+void ai::auto_play(ui_game &board){
+  board.clear_cell();
   if(ai_mode == 0){
     play_greedy(board);
   }
 }
-void ai::play_greedy(game &board){
+void ai::play_greedy(ui_game &board){
   while(!board.check_game_over()){
     vector<int> now = board.get_board();
     int best = 0;
@@ -23,6 +25,7 @@ void ai::play_greedy(game &board){
       if(fake_game.move_cells(i)>best)best = i;
       fake_game.set_board(now);
     }
-    board.move_cells(best);
+
   }
+  cout<<"Hi"<<endl;
 }
