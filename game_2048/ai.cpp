@@ -13,8 +13,7 @@ void ai::init_fake_game(){
   fake_game.clear_cell();
 }
 void ai::auto_play(ui_game &board){
-  board.clear_cell();
-  board.generate_random_cell();
+  board.start_new_ai_game();
   if(ai_mode == 0){
     play_greedy(board);
   }

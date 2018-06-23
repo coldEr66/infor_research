@@ -50,6 +50,12 @@ void ui_game::init_data(){
   best = 0;
 }
 
+void ui_game::start_new_ai_game(){
+  init_data();
+  clear_cell();
+  generate_random_cell();
+  print_board();
+}
 
 void ui_game::start_new_ui_game(){
   init_data();
