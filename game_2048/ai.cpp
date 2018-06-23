@@ -16,8 +16,17 @@ void ai::auto_play(ui_game &board){
   board.start_new_ai_game();
   if(ai_mode == 0){
     play_greedy(board);
+  } else if(ai_mode == 1){
+    play_randomly(board);
   }
 }
+
+void ai::play_randomly(ui_game &board){
+  while(!board.check_game_over()){
+    board.play_by_direction(rand()%4);
+  }
+}
+
 void ai::play_greedy(ui_game &board){
   while(!board.check_game_over()){
     vector<int> now = board.get_board();
@@ -30,7 +39,6 @@ void ai::play_greedy(ui_game &board){
     }
     assert(best_choice!=-1);
     board.play_by_direction(best_choice);
-    board.print_board();
   }
 
 }
