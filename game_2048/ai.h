@@ -11,6 +11,7 @@ private:
   void init_fake_game();
   void play_greedy(ui_game &board);
   void play_randomly(ui_game &board);
+  void play_cycle(ui_game &board);
 public:
   ai();
   ai(int mode);

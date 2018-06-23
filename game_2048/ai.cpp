@@ -18,12 +18,22 @@ void ai::auto_play(ui_game &board){
     play_greedy(board);
   } else if(ai_mode == 1){
     play_randomly(board);
+  } else if(ai_mode == 2){
+    play_cycle(board);
   }
 }
 
 void ai::play_randomly(ui_game &board){
   while(!board.check_game_over()){
     board.play_by_direction(rand()%4);
+  }
+}
+
+void ai::play_cycle(ui_game &board){
+  int direction = 0;
+  while(!board.check_game_over()){
+    if(++direction==4)direction = 0;
+    board.play_by_direction(direction);
   }
 }
 
