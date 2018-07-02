@@ -5,16 +5,21 @@
 using namespace std;
 vector<int> state::get_vector(){
   vector<int> ret;
-  for(int i=0;i<4;i++){
+  int mx = __lg(hash_size) + 1;
+  for(int i=3;i>=0;i--){
     int tmp_row = row[i];
     int pw = 1;
-    for(int j=0;j<4;j++) pw*=hash_size;
+    for(int j=0;j<3;j++) pw*=mx;
     while(tmp_row){
-      int tmp_cell = tmp_row/pw;
-      pw/=hash_size;
+      int lgtmp_cell = tmp_row/pw;
+      int tmp_cell = 1;
+      for(int k=0;k<lgtmp_cell;k++) tmp_cell*=2;
+      tmp_row -= lgtmp_cell*pw;
+      pw/=mx;
       ret.push_back(tmp_cell);
     }
   }
+  reverse(ret.begin(),ret.end());
   return ret;
 }
 vector<int> state::get_hash(){
@@ -22,14 +27,15 @@ vector<int> state::get_hash(){
 }
 void state::set_hash(const vector<int> &v){
   row.clear();
-  int mx = __lg(hash_size);
+  int mx = __lg(hash_size) + 1;
   for(int i=0;i<4;i++){
     int hash_val = 0;
     for(int j=0;j<4;j++){
       int pw = 1;
       for(int k=0;k<j;k++) pw*=mx;
       if(v[i*4+j]==0) continue;
-      else hash_val+=__lg(v[i*4+j])*pw;
+      else if(v[i*4+j]<=hash_size) hash_val+=__lg(v[i*4+j])*pw;
+      else if(v[i*4+j]>hash_size) hash_val+=__lg(hash_size)*pw;
     }
     row.push_back(hash_val);
   }
