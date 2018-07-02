@@ -1,6 +1,8 @@
 #pragma once
+#include <vector>
 #include "game.h"
 #include "ui_game.h"
+using namespace std;
 class state{
 private:
   vector<int> row;
@@ -16,18 +18,21 @@ class td_state{
 private:
   state game_state;
   int gained_score;
+  int chosed_direction;
 public:
   void set_game_state(state input_state);
   void set_gained_score(int score);
+  void set_chosed_direction(int direction);
   state get_game_state();
-  int get_gained_score;
+  int get_gained_score();
+  int get_chosed_direction();
 };
-class state_loger{
+class state_logger{
 private:
-  td_state states[4][625][625][625][625];
+  int states[4][625][625][625][625];
 public:
   void clear_states();
-  void update_state(state input_state,int direction,int scored,int learning_rate);
+  void update_state(state input_state,int direction,int scored,double learning_rate);
   int best_direction(state current_state);
 };
 class ai{
