@@ -5,6 +5,8 @@ class state{
 private:
   vector<int> row;
 public:
+  state();
+  state(vector<int> &input);
   vector<int> get_vector();
   vector<int> get_hash();
   void set_hash(const vector<int> &v);
@@ -12,16 +14,19 @@ public:
 class td_state{
 private:
   state game_state;
-  int chosed_direction;
   int expected_score;
 public:
   void set_game_state(state input_state);
   void set_gained_score(int score);
-  void set_chosed_direction(int direction);
   state get_game_state();
-  int get_chosed_direction;
-  int get_gained_score;
-
+  int get_expected_score;
+};
+class state_loger{
+private:
+  td_state states[4][625][625][625][625];
+public:
+  void log_state(state input_state,int direction);
+  int best_direction(state current_state);
 };
 class ai{
 private:
