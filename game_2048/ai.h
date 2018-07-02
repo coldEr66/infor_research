@@ -13,7 +13,7 @@ class td_state{
 private:
   state game_state;
   int chosed_direction;
-  int gained_score;
+  int expected_score;
 public:
   void set_game_state(state input_state);
   void set_gained_score(int score);
@@ -34,6 +34,7 @@ private:
   void play_greedy(ui_game &board);
   void play_randomly(ui_game &board);
   void play_cycle(ui_game &board);
+  void play_td0(ui_game &board);
 public:
   ai();
   ai(int mode);
