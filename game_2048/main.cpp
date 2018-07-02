@@ -16,6 +16,7 @@ int main(){
       mode_chosed = true;
       root.start_new_ui_game();
     } else if(game_mode == 1) {
+<<<<<<< HEAD
       mode_chosed = true;
       int auto_function = -1;
       while(!(auto_function >= 0 && auto_function < 3)){
@@ -25,6 +26,9 @@ int main(){
       }
       ai ai_player(auto_function);
       ai_player.auto_play(root);
+=======
+
+>>>>>>> d4503f5a5c240b4f2dd501764b607c569717dba3
     } else {
 
     }
