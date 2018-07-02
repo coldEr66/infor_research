@@ -3,6 +3,37 @@
 #include "ai.h"
 #include "game.h"
 using namespace std;
+vector<int> state::get_vector(){
+  vector<int> ret;
+  for(int i=0;i<4;i++){
+    int tmp_row = row[i];
+    int pw = 1;
+    for(int j=0;j<4;j++) pw*=hash_size;
+    while(tmp_row){
+      int tmp_cell = tmp_row/pw;
+      pw/=hash_size;
+      ret.push_back(tmp_cell);
+    }
+  }
+  return ret;
+}
+vector<int> state::get_hash(){
+  return row;
+}
+void state::set_hash(const vector<int> &v){
+  row.clear();
+  int mx = __lg(hash_size);
+  for(int i=0;i<4;i++){
+    int hash_val = 0;
+    for(int j=0;j<4;j++){
+      int pw = 1;
+      for(int k=0;k<j;k++) pw*=mx;
+      if(v[i*4+j]==0) continue;
+      else hash_val+=__lg(v[i*4+j])*pw;
+    }
+    row.push_back(hash_val);
+  }
+}
 ai::ai(){
   ai_mode = 0;
 }

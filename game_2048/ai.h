@@ -4,6 +4,7 @@
 class state{
 private:
   vector<int> row;
+  int hash_size;
 public:
   state();
   state(vector<int> &input);
