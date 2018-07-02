@@ -14,18 +14,19 @@ public:
 class td_state{
 private:
   state game_state;
-  int expected_score;
+  int gained_score;
 public:
   void set_game_state(state input_state);
   void set_gained_score(int score);
   state get_game_state();
-  int get_expected_score;
+  int get_gained_score;
 };
 class state_loger{
 private:
   td_state states[4][625][625][625][625];
 public:
-  void log_state(state input_state,int direction);
+  void clear_states();
+  void update_state(state input_state,int direction,int scored,int learning_rate);
   int best_direction(state current_state);
 };
 class ai{
